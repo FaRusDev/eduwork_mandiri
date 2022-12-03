@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tugas Mandiri 2</title>
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            font-family: sans-serif;
+            color: white;
+            background-image: url('https://preview.colorlib.com/theme/bootstrap/login-form-20/images/bg.jpg.webp');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            background-color: rgba(0,0,0,0.3);
+            background-blend-mode: darken;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .form{
+            height: fit-content;
+            width: 350px;
+            padding: 10px;
+        }
+
+        .form-content{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .form-input{
+            width: 100%;
+            padding: 15px;
+            border-radius: 20px;
+            border: none;
+            color: white;
+            background-color: rgba(255, 255, 255, .3);
+            margin-bottom: 20px;
+        }
+
+        .form-button{
+            width: 100%;
+            padding: 15px;
+            border-radius: 20px;
+            border: none;
+            background-color: bisque;
+        }
+        
+        .form-input::placeholder{
+            color: white;
+        }
+
+        .form-input:focus{
+            outline: none;
+        }
+
+        .form-checkbox{
+            margin: 10px;
+            transform: scale(1.5);
+            border: none;
+            background-color: black;
+        }
+
+        .form-checkbox:checked{
+            accent-color: bisque;
+        }
+
+
+        .form-content label, a{
+            color: white;
+            text-decoration: none;
+        }
+
+        .other-sign-in{
+            display: flex;
+            justify-content: space-between;
+            width: 350px;
+            margin-top: 15px;
+        }
+
+        .other-sign-in button{
+            padding: 10px;
+            width: 50%;
+            margin: 5px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+        }
+
+
+    </style>
+
+</head>
+
+<body>
+    <h1>Have an account ?</h1>
+    <form action="#" class="form">
+        <div class="form-content">
+            <input id="username" type="text" placeholder="Username" class="form-input">
+        </div>
+        <div class="form-content">
+            <input id="password" type="password" placeholder="Password" class="form-input">
+        </div>
+
+        <div class="form-content">
+            <button class="form-button">SIGN IN</button>
+        </div>
+
+        <div class="form-content"> 
+            <label for="check">
+                <input class="form-checkbox" type="checkbox" name="check" id="check">
+                <span class="nike"></span>
+                Remember me
+            </label>
+            <a href="#">Forgot Password</a>
+        </div>
+    </form>
+    <p>-Or Sign In With-</p>
+    <div class="other-sign-in">
+        <button>Facebook</button>
+        <button>Twitter</button>
+    </div>
+</body>
+</html>

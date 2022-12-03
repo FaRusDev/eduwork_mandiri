@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tugas mandiri 1</title>
+    
+    <style>
+        
+        *::before,
+        *::after{
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body{
+            font-family: sans-serif;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: black;
+        }
+
+        .form {
+            background-color: white;
+            width: 300px;
+            padding: 20px 50px;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            border-radius: 5px;
+        }
+
+        .form-content{
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            display: flex;
+            padding: 10px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .form-input{
+            width: 100%;
+            display: block;
+            position: relative;
+            padding: 10px 10px;
+            border: .5px solid rgba(0, 0,0,.1);
+            margin-bottom: 10px;
+        }
+
+        .form-label{
+            position: absolute;
+            top: 1rem;
+            margin-left: 10px;
+            background-color: white;
+            padding: 2px;
+            left: 5px;
+            font-size: 14px;
+            transition: .3s ease;
+            color: gray;
+        }
+
+        .form-input:focus ~ .form-label,
+        .form-input:not(:placeholder-shown) ~ .form-label
+        {
+            top: -.01rem;
+            font-size: 12px;
+        }
+
+        .form-input:focus{
+            background-color: antiquewhite;
+        }
+
+        .form-button{
+            width: 100%;
+            padding: 10px;
+            border: none;
+            background-color: rgb(24, 23, 23);
+            color: white;
+            border-radius: 5px; 
+        }
+
+
+    </style>
+</head>
+<body>
+    <form action="#" class="form">
+        <div class="form-content">
+            <input type="text" id="email" class="form-input" placeholder="username or email">
+            <label for="email" class="form-label">Email or username</label>
+        </div>
+        <div class="form-content">
+            <input type="password" id="password" class="form-input"  placeholder="password">
+            <label for="password" class="form-label">Password</label>
+        </div>
+        <div class="form-content">
+            <button type="submit" class="form-button">Login</button>
+        </div>
+    </form>
+</body>
+</html>
