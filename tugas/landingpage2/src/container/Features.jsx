@@ -1,4 +1,4 @@
-// import { useEffect, useState } from 'react'
+import { useState, useEffect } from 'react'
 
 import FeatureCard from '../components/FeatureCard'
 import Icon1 from '../assets/images/icon1.png'
@@ -43,24 +43,46 @@ const featureItem = [
 ]
 
 const Features = () => {
-  // const [cl,setCl] = useState('')
+  // const [featureCount,setFeatureCount] = useState(3)
+  // const [cl,setCl] = useState('block')
+  const [features, setFeatures] = useState([])
 
-  // useEffect({
+  useEffect(() => {
+    // setFeatureCount(3)
 
-  // },[])
+      let x = []
+      featureItem.map((f,i)=>{
+        console.log(i)
+        return x.push(<FeatureCard cl='block' title={f.title} desc={f.desc} ic={f.ic} key={i}/>)
+        
+      })
+      
+      setFeatures(x)
+        
+  }, [])
+
+    
+
+
+  const showMoreFeature = () => {
+    // setFeatureCount(featureItem.length)
+
+  }
+
+  // const showFeature = () =>{
+
+  //   // for (let index = 0; index < featureCount; index++) {
+  //   //   <FeatureCard cl='block' title={item.title} desc={item.desc} ic={item.ic}/>
+  //   // }
+  // }
 
   return (
-    <section className='text-center'>
+    <section className='text-center px-4'>
       <h2 className='font-bold text-xl my-12'>Make your work easier</h2>
       <div className="flex flex-col space-y-5">
-        {
-          featureItem.map((item,idx) => (
-            <div key={idx+item}>
-              {idx>2 ? console.log('tes'):console.log('ss')}
-              <FeatureCard cl='block' title={item.title} desc={item.desc} ic={item.ic}/>
-            </div>
-          ))
-        }
+        {features}
+        {/* {featureCount} */}
+        <button onClick={showMoreFeature} className='w-full p-2 bg-purple-second rounded-md text-purple-button hover:bg-purple-button hover:text-white md:hidden'>View more benefits</button>
       </div>
     </section>
   )

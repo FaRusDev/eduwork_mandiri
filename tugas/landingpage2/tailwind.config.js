@@ -9,6 +9,7 @@ module.exports = {
         'black-font':'#35414B',
         'gray-font' : '#4E5A65',
         'purple-button' : '#796EFF',
+        'purple-second' : '#ECE5FF',
       },
       fontFamily:{
         'inter':'inter',
