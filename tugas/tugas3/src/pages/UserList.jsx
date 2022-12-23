@@ -14,6 +14,7 @@ import { useState,useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllUsers } from "../features/user/UserSlice";
 
+import { Link } from "react-router-dom";
 
 const UserList = () => {
   const [dataUsers,setDataUsers] = useState([])
@@ -106,7 +107,10 @@ const UserList = () => {
               <TableCell>{user.username}</TableCell>
               <TableCell>{user.birthDate}</TableCell>
               <TableCell className="space-x-2">
-                  <Button variant="contained" endIcon={<EditIcon />}>Edit</Button>
+                  <Link to={`/users/edit/${user.id}`}>
+                    <Button variant="contained" endIcon={<EditIcon />}>Edit</Button>
+                  </Link>
+                  
                   <Button variant="contained" color="error" endIcon={<DeleteIcon />}>Delete</Button>
               </TableCell>
             </TableRow>

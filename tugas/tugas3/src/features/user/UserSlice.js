@@ -9,46 +9,44 @@ export const getAllUsers = createAsyncThunk(
     }
 )
 
-export const searchUser = createAsyncThunk(
-    'user/searchUser',
-    async (name) => {
-        const resp = await AxiosHelper.get(`/users/search?q=${name}`)
-        return resp.data
-    }
-)
+// export const searchUser = createAsyncThunk(
+//     'user/searchUser',
+//     async (name) => {
+//         const resp = await AxiosHelper.get(`/users/search?q=${name}`)
+//         return resp.data
+//     }
+// )
 
 export const getUserById = createAsyncThunk(
     'user/getUserById',
     async (id,{dispatch}) => {
-        const resp = await AxiosHelper.get(`users/${id}`)
-        const finalPayload = resp.data
-
-        //dispatch someaAction
-        return finalPayload
+        const resp = await AxiosHelper.get(`/users/${id}`)
+        return resp.data
     }
-
 )
 
 export const addUser = createAsyncThunk(
     'user/addUser',
     async (data, {dispatch}) => {
-        const resp = await AxiosHelper.post('/users/add',data)
+        const resp = await AxiosHelper.post('/users/',data)
         const finalPayload = resp.data
-        
         //do dispatch here
         return finalPayload
+
+
     }
 )
 
 
 export const updateUser = createAsyncThunk(
     'user/updateUser',
-    async(id, {dispatch}) => {
+    async(id) => {
+        console.log('dari update', id,)
         const resp = await AxiosHelper.put(`/users/${id}`)
-        const finalpayload = resp.data
+        const finalPayload = resp.data
         
         //do dispatch here
-        return finalpayload
+        return finalPayload
     }
 )
 
@@ -68,6 +66,7 @@ export const deleteUser = createAsyncThunk(
 const initialState = {
     loading : false,
     users : [],
+    singleUser:{},
 }
 
 export const UserSlice = createSlice({
@@ -81,8 +80,13 @@ export const UserSlice = createSlice({
     //     },
     //     [getAllUsers.fulfilled]: (state,action) => {
     //         state.loading = false
-    //         state.users = action.payload.users
+    //         state.users = action.payload
     //     },
+    //     [getUserById.fulfilled]:(state,action)=>{
+    //         state.singleUser = action.payload
+    //         console.log(state.singleUser)
+    //         console.log(state.users)
+    //     }
         
     // }
 
@@ -91,12 +95,40 @@ export const UserSlice = createSlice({
             state.loading = true
         }).addCase(getAllUsers.fulfilled, (state,action)=>{
             state.loading = false
-            state.users = action.payload.users
+            state.users = action.payload
+            console.log(state.users)
         }).addCase(addUser.pending, (state,action) => {
             state.loading = true
         }).addCase(addUser.fulfilled, (state,action)=>{
-            state.users.push(action.payload.users)
+            state.users.push(action.payload)
             state.loading = false
+        }).addCase(getUserById.pending, (state,action)=> {
+            state.loading=true
+        }).addCase(getUserById.fulfilled, (state,action)=>{
+            state.loading = false
+            state.singleUser = action.payload
+            console.log(action.payload)
+            
+        }).addCase(updateUser.pending, (state,action)=>{
+            state.loading = true
+        }).addCase(updateUser.fulfilled, (state,action)=>{
+            // const index = state.users.findIndex(u => u.id === action.payload.id)
+            
+            // console.log('ini states',state.users)
+            // console.log('ini payload', action.payload)
+            // console.log('ini index', index)
+
+            // console.log('ini dari users indec', state.users[index])
+            // state.users[index] = action.payload
+            state.loading = false
+            console.log('re', action.payload.id)
+            const index = state.users.findIndex(u => {
+                console.log(u)
+                return u.users.id === action.payload.id
+            })
+            console.log(index)
+            state.singleUser = action.payload
+        
         })
     }
 })

@@ -21,6 +21,7 @@ const AddUser = () => {
     async function handleSubmit(e){
         e.preventDefault()
         await dispatch(addUser(data)).then(data=>console.log('berhasil', data))
+        setAlertNotif(true)
     }
 
     function closeAlert(){
